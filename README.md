@@ -14,30 +14,31 @@ A good tool in combination with [Charset Expllorer](https://github.com/saborido/
  pesan más que un randomize usr, aparte de que es más cómodo esto último (y rápido si lo haces desde basic).
 
  Al ejecutar el programa te hará una serie de preguntas que explico a continuación:
-
->Dir. inicio de la rutina? Donde quieres que empiece la rutina de asm. Luego la puedes cargar en la
+```
+-Dir. inicio de la rutina? Donde quieres que empiece la rutina de asm. Luego la puedes cargar en la
  dirección de memoria que desees, pero de momento, hay que meterla en algún sitio... la rutina digo.
  No pongas una dirección menor de 40000, el CLEAR está en 39999 para hacer sitio al programa basic.
 
->Cuantos charsets? La cantidad de charsets que vas a usar.
+-Cuantos charsets? La cantidad de charsets que vas a usar.
 
->Charsets consecutivos (s-n)? Si todos los charsets los vas a poner uno detras de otro, seguiditos, o si
+-Charsets consecutivos (s-n)? Si todos los charsets los vas a poner uno detras de otro, seguiditos, o si
  los vas a poner en una direcciones de memoria desperdigadas.
 
->Si la respuesta es NO, te preguntará la dirección específica de cada uno de los charsets. Tenlos
- calculados de antemano, y procura que no se pisen las direcciones puesto que el programa no hace
- comprobación alguna. Cada charset son 768 bytes (96 caracteres, 8 bytes por caracter).
-
->Si la respuesta es SI, te preguntará la dirección de inicio de los charsets. Intenta no pisar la
- misma rutina que se va a crear. Si respondes 0, pondrá la dirección de inicio de los charsets al
-final de la rutina de selección, y creo que es lo más recomendado (pone los charsets consecutivos
-al final de la rutina ASM, para que esté todo junto).
+     -Si la respuesta es NO, te preguntará la dirección específica de cada uno de los charsets. Tenlos
+      calculados de antemano, y procura que no se pisen las direcciones puesto que el programa no hace
+      comprobación alguna. Cada charset son 768 bytes (96 caracteres, 8 bytes por caracter).
+     
+     -Si la respuesta es SI, te preguntará la dirección de inicio de los charsets. Intenta no pisar la
+      misma rutina que se va a crear. Si respondes 0, pondrá la dirección de inicio de los charsets al
+     final de la rutina de selección, y creo que es lo más recomendado (pone los charsets consecutivos
+     al final de la rutina ASM, para que esté todo junto).
+```
 
 -En este momento se empezará a crear el código ensamblador. Puedes hacerte una idea de cual será la longitud
  del código generado con esta fórmula: 10 + (5 x NumeroDeCharsets) bytes. Por ejemplo, si el máximo de
  charsets que puedes crear con este programa son 32, lo máximo que puede llegar a pesar el código son
  10 + (5 x 32) = 170 Bytes.
-
+ 
  Después de generar el código, te saldrá una pantalla con algunos datos a modo de resumen y un menú, con el
  que puedes listar el código ensamblador generado, la lista de todos los charsets con su respectiva dirección
  de memoria, ver el CODE con la dirección de inicio de la rutina y su longitud, y podrás hacer un
@@ -49,7 +50,8 @@ al final de la rutina ASM, para que esté todo junto).
  Ten cuidado en no confundir 'dirección de inicio de la rutina' con 'dirección de inicio de los charsets'. Lo
  primero es el código ensamblador, que buscará los charsets en la dirección que se le diga.
 
-'''
+```
+
 Rutina original de MicroHobby:
 -----------------------------
 
@@ -102,4 +104,5 @@ Direc.	Hex.	Dec.	OPcode		Label
 63061	00	0	0000
 63062	00	0	
 63063	C9	201	RET
-'''
+
+```
