@@ -21,8 +21,8 @@ A good tool in combination with [Charset Expllorer](https://github.com/saborido/
 
 -Cuantos charsets? La cantidad de charsets que vas a usar.
 
--Charsets consecutivos (s-n)? Si todos los charsets los vas a poner uno detras de otro, seguiditos, o si
- los vas a poner en una direcciones de memoria desperdigadas.
+-Charsets consecutivos (s-n)? Si todos los charsets los vas a poner uno detras de otro, seguiditos,
+ o si los vas a poner en una direcciones de memoria desperdigadas.
 
      -Si la respuesta es NO, te preguntará la dirección específica de cada uno de los charsets. Tenlos
       calculados de antemano, y procura que no se pisen las direcciones puesto que el programa no hace
