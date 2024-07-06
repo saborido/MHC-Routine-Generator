@@ -1,4 +1,4 @@
-# MHC Routine Generator
+# MHC Routine Generator - For ZX Spectrum
 
 ## MicroHobby Charsets routine generator up to 32 charsets max.
 
