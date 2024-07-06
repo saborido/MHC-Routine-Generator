@@ -1,0 +1,32 @@
+				Variables y datos en memoria:
+				----------------------------
+
+-29995: Para salir del programa, 0 sale al BASIC, 1 para guardar, 255 para volver al menu.
+-29996: Dirección de memoria a guardar.
+-29997: 	""	(dir. 16 bits).
+-29996: Longitud a guardar.
+-29997: 	""	(dir. 16 bits).
+
+
+			Variables del listado BASIC (todas INT+):
+			----------------------------------------
+
+di: direccion del charset.
+da: parte alta de la direccion del charset.
+db: parte baja de la direccion del charset.
+ i: direccion inicio de la rutina.
+ii: backup de 'i'.
+ n: numero de charsets.
+nn: backup de 'n' (linea 8630).
+ c: direccion de inicio de los charsets (en caso de secuenciales).
+ e: direccion final de la rutina.
+ k: lectura del teclado.
+ l: longitud (lenght) del codigo asm.
+
+	>Temporales:
+
+ b: uso en Read de datas.
+ x: uso en charsets secuenciales.
+ z: uso en bucles.
+
+Dim c(32): Matriz de charsets.
