@@ -2,57 +2,58 @@
 
 ## MicroHobby Charsets routine generator up to 32 charsets max.
 
-A good tool in combination with [Charset Explorer](https://github.com/saborido/Charset-Explorer).
+You can use it in combination with [Charset Explorer](https://github.com/saborido/Charset-Explorer).
 
 ----------------
 
--Programa para personalizar la rutina asm de la sección de MicroHobby número 30, páginas 14 a 16
- 'Personaliza tu Spectrum'
+-Program to customize the asm routine from MicroHobby section number 30, pages 14 to 16 'Personaliza
+ tu Spectrum'
 
- Esta rutina  de MicroHobby, te permite cambiar mediante un RANDOMIZE USR la variable del sistema CHARS. De
- otra forma habría que hacerlo con dos POKES, y si vas a cambiar mucho de charsets en un programa, dos pokes
- pesan más que un randomize usr, aparte de que es más cómodo esto último (y rápido si lo haces desde basic).
+ This MicroHobby routine allows you to change the CHARS System variable using a RANDOMIZE USR.
+ Otherwise you would have to do it with two POKES, and if you are going to change a lot of charsets
+ in a program, two pokes are heavier than a randomize usr, apart from the fact that the latter is
+ more comfortable (and faster if you do it from BASIC).
 
- Al ejecutar el programa te hará una serie de preguntas que explico a continuación:
+ When you run the program, it will ask you a series of questions that I explain below:
 ```
--Dir. inicio de la rutina? Donde quieres que empiece la rutina de asm. Luego la puedes cargar en la
- dirección de memoria que desees, pero de momento, hay que meterla en algún sitio... la rutina digo.
- No pongas una dirección menor de 40000, el CLEAR está en 39999 para hacer sitio al programa basic.
+>Dir. inicio de la rutina? (Routine start address?) Where you want the asm routine to start. Then you
+ can load in the memory address you want, but for now, it needs to be stored somewhere. Do not enter
+ an address less than 40000.
 
--Cuantos charsets? La cantidad de charsets que vas a usar.
+>Cuantos charsets? (How many charsets?) The number of charsets you are going to use.
 
--Charsets consecutivos (s-n)? Si todos los charsets los vas a poner uno detras de otro, seguiditos,
- o si los vas a poner en una direcciones de memoria desperdigadas.
+>Charsets consecutivos (s-n)? (Consecutive charsets (y-n)?) If you are going to put all the charsets
+ one after the other, in a row, or if you are going to put them in scattered memory addresses.
 
-     -Si la respuesta es NO, te preguntará la dirección específica de cada uno de los charsets. Tenlos
-      calculados de antemano, y procura que no se pisen las direcciones puesto que el programa no hace
-      comprobación alguna. Cada charset son 768 bytes (96 caracteres, 8 bytes por caracter).
-     
-     -Si la respuesta es SI, te preguntará la dirección de inicio de los charsets. Intenta no pisar la
-      misma rutina que se va a crear. Si respondes 0, pondrá la dirección de inicio de los charsets al
-     final de la rutina de selección, y creo que es lo más recomendado (pone los charsets consecutivos
-     al final de la rutina ASM, para que esté todo junto).
+	>If the answer is NO, you will be asked for the specific address of each of the charsets.
+	 Have them calculated beforehand, and make sure that the addresses do not overlap since
+	 the program does not perform any check. Each charset is 768 bytes (96 characters, 8 bytes
+	 per character).
+
+	>If the answer is YES, it will ask you for the start address of the charsets. Try not to
+	 step on the same routine that is going to be created. If you answer 0, it will put the
+	 start address of the charsets at the end of the selection routine, and I think that is
+	 the most recommended (it puts the consecutive charsets at the end of the ASM routine, so
+	 that everything is together).
 ```
-
--En este momento se empezará a crear el código ensamblador. Puedes hacerte una idea de cual será la longitud
- del código generado con esta fórmula: 10 + (5 x NumeroDeCharsets) bytes. Por ejemplo, si el máximo de
- charsets que puedes crear con este programa son 32, lo máximo que puede llegar a pesar el código son
+-At this moment the assembly code will begin to be created. You can get an idea of ​​the length of the
+ generated code with this formula: 10 + (5 x NumberOfCharsets) bytes. For example, if the maximum
+ number of charsets you can create with this program is 32, the maximum the code can weigh is
  10 + (5 x 32) = 170 Bytes.
- 
- Después de generar el código, te saldrá una pantalla con algunos datos a modo de resumen y un menú, con el
- que puedes listar el código ensamblador generado, la lista de todos los charsets con su respectiva dirección
- de memoria, ver el CODE con la dirección de inicio de la rutina y su longitud, y podrás hacer un
- SAVE "charsets" CODE xxxxx,yy (vamos, que puedes grabar la rutina en una cinta o disco).
 
- Para seleccionar la rutina de la ROM, se ha de hacer un RANDOMIZE USR a la dirección de inicio de la rutina.
- Para los charsets siguientes, haz incrementos de 5 bytes por cada charset.
+ After generating the code, you will see a screen with some summary data and a menu, with which you
+ can list the generated assembly code, the list of all the charsets with their respective memory
+ address, see the CODE with the start address of the routine and its length, and you can do a
+ SAVE "charsets" CODE xxxxx,yy (which can save the routine to a tape or disk).
 
- Ten cuidado en no confundir 'dirección de inicio de la rutina' con 'dirección de inicio de los charsets'. Lo
- primero es el código ensamblador, que buscará los charsets en la dirección que se le diga.
+ To select the ROM routine, a RANDOMIZE USR must be done to the starting address of the routine. For
+ the following charsets, do 5 byte increments for each charset.
+
+ Be careful not to confuse 'routine start address' with 'charset start address'. The first thing is
+ the assembly code, which will look for the charsets at the address you tell it to.
 
 ```
-
-Rutina original de MicroHobby:
+MicroHobby's original routine:
 -----------------------------
 
 63039	21003C	J_ROM	LD HL,#3C00
@@ -66,14 +67,14 @@ Rutina original de MicroHobby:
 63060	010000		LD BC,#0000
 63063	C9		RET
 
--Esta rutina sirve para 3 charsets. La rutina empieza en 63039, y cada charset empieza en 63064, 63832 y 64600
- respectivamente. El RANDOMIZE USR es 63039 para el charset de la ROM, 63044 parta el charset 1, 63049 para el
- charset 2, y 63054 para el charset 3 (en incrementos de 5, vamos).
+-This routine works for 3 charsets. The routine starts at 63039, and each charset starts at 63064,
+ 63832, and 64600 respectively. The RANDOMIZE USR is 63039 for the ROM charset, 63044 for charset 1,
+ 63049 for charset 2, and 63054 for charset 3 (in increments of 5).
 
 
-Destripando un poco el codigo original:
+Breaking down the original code a bit:
 
-Direc.	Hex.	Dec.	OPcode		Label
+Addr.	Hex.	Dec.	OPcode		Label
 -----	---	---	------		-----
 63039	21	33	LD HL		;J_ROM
 63040	00	0	#3C00
