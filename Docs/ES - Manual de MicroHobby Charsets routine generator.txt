@@ -1,3 +1,7 @@
+
+					MicroHobby Charsets routine generator
+					-------------------------------------
+
 -Programa para personalizar la rutina asm de la sección de MicroHobby número 30, páginas 14 a 16
  'Personaliza tu Spectrum'
 
